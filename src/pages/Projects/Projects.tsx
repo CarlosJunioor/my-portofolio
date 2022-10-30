@@ -28,7 +28,6 @@ function Projects() {
                             {repo.description}
                         </p>
                         <a href={repo.html_url} target='_blank'>- Link </a>
-                    
                     </li>
                 )
             })}

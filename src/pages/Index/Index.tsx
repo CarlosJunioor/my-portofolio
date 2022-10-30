@@ -1,14 +1,17 @@
 import React from "react";
 
 function Index() {
+
+  
   return (
     <>
+    
       <img
-        className="h-96"
-        src="https://img.seadn.io/files/45995c3ab8a703c96611ccecb5444324.png?fit=max&w=1000"
-      />
-      <h1 className="text-3xl">
-        Frontend developer doing a career shit from sales
+        className="h-96 mx-auto"
+        src="https://img.seadn.io/files/45995c3ab8a703c96611ccecb5444324.png?fit=max&w=1000"/>
+      <div className="grid justify-center">
+      <h1 className="text-4xl">
+        Frontend developer doing a career shift from sales
       </h1>
 
       <ul>
@@ -28,6 +31,7 @@ function Index() {
           <li>contact</li>
         </a>
       </ul>
+      </div>
     </>
   );
 }
