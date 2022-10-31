@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar.tsx';
 
+
 import Logo from "../assets/background.png";
 import Logo2 from "../assets/background-removebg.png";
 
@@ -11,7 +12,7 @@ function Home() {
         <>
 		<body className="bg-[#16131E]">
 		<Navbar />
-
+      
      <div className="flex place-content-center w-full mt-5">
         <a href='/Index'>
         <img
