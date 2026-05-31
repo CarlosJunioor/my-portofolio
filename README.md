@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Carlos Junior — Portfolio 🛰️
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A deep-space, mission-control themed personal site: projects as **missions**
+(live / building / archived), writing as **transmissions** (native posts + an
+auto-pulled dev.to and Medium feed, merged into one timeline), and an about
+page with a flight-log timeline and skill constellation.
 
-## Available Scripts
+**Live:** https://carlosjuniordev.vercel.app
 
-In the project directory, you can run:
+## Stack
 
-### `npm start`
+- **Next.js 16** (App Router, React 19, RSC) + **TypeScript** (strict)
+- **Tailwind CSS v4** (CSS-first `@theme` tokens) + a hand-built space design system
+- **Framer Motion** for scroll reveals & micro-interactions, plus a `<canvas>` parallax starfield
+- **next-mdx-remote** for native MDX posts
+- Type system: **Syne** (display) · **Manrope** (body) · **Martian Mono** (telemetry)
+- Deployed on **Vercel**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Develop
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # production build
+npm start          # serve the production build
+npm test           # unit tests (Vitest) for the data layer
+```
 
-### `npm test`
+### Environment
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Copy `.env.example` → `.env.local`. All variables are optional:
 
-### `npm run build`
+| Var | Purpose |
+|-----|---------|
+| `GITHUB_TOKEN` | Raises the GitHub API rate limit (60→5000/hr). Read-only; no scopes needed for public data. |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Where the content lives
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Everything you'd want to edit is plain data — no CMS:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **`content/profile.ts`** — name, bio, roles, skills, experience timeline, social links.
+- **`content/projects.ts`** — project **curation**:
+  - `curationByRepo` — override any GitHub repo's status (`live`/`building`/`archived`), mark it `featured`, set a custom `tagline`, `stack`, `thumbnail`, and display `order`.
+  - `manualProjects` — projects that aren't public GitHub repos (e.g. AIOS).
+  - `hiddenRepos` — repos to hide from the site entirely.
+- **`content/posts/*.mdx`** — native posts (frontmatter: `title`, `date`, `summary`, `tags`, optional `cover`).
 
-### `npm run eject`
+## How the feeds work
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The data layer in `lib/` fetches at build time with ISR caching and **degrades
+gracefully** — a failed/rate-limited upstream never breaks a page, it just shows
+what it has:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `lib/github.ts` — pulls repos from the GitHub REST API (revalidate daily).
+- `lib/projects.ts` — merges GitHub repos with `content/projects.ts` curation into
+  `featured` / `live` / `archived` buckets.
+- `lib/posts.ts` — merges **native MDX + dev.to + Medium** into one feed, sorted
+  newest-first and de-duplicated across cross-posts (revalidate hourly).
+  - dev.to handle and Medium handle are derived from `content/profile.ts` socials.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The pure transform functions (date formatting, repo→project mapping, curation
+merge, post normalization/merge) are unit-tested in `lib/*.test.ts`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Project structure
 
-## Learn More
+```
+app/            routes: / · /projects · /posts · /posts/[slug] · /about · 404 · sitemap · robots
+components/     background (Starfield, NebulaBackdrop), ui, layout, home, projects, posts, about, mdx
+content/        profile, projects curation, native MDX posts
+lib/            data layer + types + utils (+ tests)
+docs/           design spec, implementation plan, gathered research
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Deploy
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Push to the connected Vercel project, or:
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+vercel           # preview deploy
+vercel --prod    # production
+```
