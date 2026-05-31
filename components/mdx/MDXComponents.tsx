@@ -1,3 +1,6 @@
+/* MDX post bodies reference images on arbitrary external CDNs (Medium/dev.to),
+   so a raw <img> is intentional here rather than next/image. */
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { ComponentPropsWithoutRef } from "react";
@@ -25,12 +28,12 @@ export const mdxComponents = {
   h3: (props: ComponentPropsWithoutRef<"h3">) => <h3 {...props} />,
   ul: (props: ComponentPropsWithoutRef<"ul">) => <ul {...props} />,
   ol: (props: ComponentPropsWithoutRef<"ol">) => <ol {...props} />,
-  blockquote: (props: ComponentPropsWithoutRef<"blockquote">) => <blockquote {...props} />,
+  blockquote: (props: ComponentPropsWithoutRef<"blockquote">) => (
+    <blockquote {...props} />
+  ),
   pre: (props: ComponentPropsWithoutRef<"pre">) => <pre {...props} />,
   code: (props: ComponentPropsWithoutRef<"code">) => <code {...props} />,
-  // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
-  img: (props: ComponentPropsWithoutRef<"img">) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img {...props} className="my-6 w-full rounded-xl border border-white/10" alt={props.alt ?? ""} />
+  img: ({ alt = "", ...props }: ComponentPropsWithoutRef<"img">) => (
+    <img {...props} alt={alt} className="my-6 w-full rounded-xl border border-white/10" />
   ),
 };
