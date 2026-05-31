@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ChevronDown, ArrowRight } from "lucide-react";
 
 export interface HeroProps {
@@ -10,6 +10,16 @@ export interface HeroProps {
   roles: string[];
   location: string;
 }
+
+const container: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+};
 
 export function Hero({ name, roles, location }: HeroProps) {
   const reduced = useReducedMotion();
@@ -21,17 +31,6 @@ export function Hero({ name, roles, location }: HeroProps) {
     return () => clearInterval(id);
   }, [reduced, roles.length]);
 
-  const container = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
-  };
-  const item = reduced
-    ? {}
-    : {
-        hidden: { opacity: 0, y: 20 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
-      };
-
   return (
     <section className="relative flex min-h-[92vh] flex-col justify-center pt-20">
       <motion.div
@@ -40,12 +39,12 @@ export function Hero({ name, roles, location }: HeroProps) {
         animate={reduced ? undefined : "show"}
         className="max-w-3xl"
       >
-        <motion.p variants={item} className="telemetry mb-5">
+        <motion.p variants={reduced ? undefined : item} className="telemetry mb-5">
           // LAT 38.72°N · LON 9.14°W — {location}
         </motion.p>
 
         <motion.h1
-          variants={item}
+          variants={reduced ? undefined : item}
           className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-7xl"
         >
           <span className="text-star">Hi, I&apos;m</span>
@@ -54,7 +53,7 @@ export function Hero({ name, roles, location }: HeroProps) {
         </motion.h1>
 
         <motion.div
-          variants={item}
+          variants={reduced ? undefined : item}
           className="mt-6 flex h-8 items-center font-mono text-lg text-muted sm:text-xl"
         >
           <span className="mr-2 text-[var(--color-nebula-cyan)]">▹</span>
@@ -72,7 +71,10 @@ export function Hero({ name, roles, location }: HeroProps) {
           )}
         </motion.div>
 
-        <motion.div variants={item} className="mt-10 flex flex-wrap gap-4">
+        <motion.div
+          variants={reduced ? undefined : item}
+          className="mt-10 flex flex-wrap gap-4"
+        >
           <Link
             href="/projects"
             className="group inline-flex items-center gap-2 rounded-full border border-[var(--color-nebula-cyan)]/40 bg-[var(--color-nebula-cyan)]/10 px-6 py-3 font-mono text-sm uppercase tracking-wider text-[var(--color-nebula-cyan)] transition-all hover:-translate-y-0.5 hover:glow-cyan"
