@@ -39,7 +39,8 @@ export function mergeProjects(
       };
     });
 
-  manual.forEach((m, i) => orderOf.set(m.slug, i));
+  // Manual projects sort after curated repos (curated use order 1..999).
+  manual.forEach((m, i) => orderOf.set(m.slug, 1000 + i));
   const all = [...mapped, ...manual];
 
   const featured = all

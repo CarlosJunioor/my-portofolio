@@ -22,6 +22,7 @@ export function stripHtml(html: string): string {
 export function truncate(text: string, max: number): string {
   if (text.length <= max) return text;
   const slice = text.slice(0, max);
+  if (text[max] === " ") return slice + "…";
   const lastSpace = slice.lastIndexOf(" ");
   return (lastSpace > 0 ? slice.slice(0, lastSpace) : slice) + "…";
 }
