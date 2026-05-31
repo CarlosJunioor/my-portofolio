@@ -1,10 +1,21 @@
-export default function HomePage() {
+import { Hero } from "@/components/home/Hero";
+import { AboutTeaser } from "@/components/home/AboutTeaser";
+import { FeaturedMissions } from "@/components/home/FeaturedMissions";
+import { LatestPosts } from "@/components/home/LatestPosts";
+import { ContactCTA } from "@/components/home/ContactCTA";
+import { profile } from "@/content/profile";
+import { getProjects } from "@/lib/projects";
+import { getAllPosts } from "@/lib/posts";
+
+export default async function HomePage() {
+  const [{ featured }, posts] = await Promise.all([getProjects(), getAllPosts()]);
   return (
-    <div className="flex min-h-[70vh] flex-col items-center justify-center text-center">
-      <p className="telemetry">// SYSTEMS ONLINE</p>
-      <h1 className="text-nebula font-display mt-4 text-5xl font-extrabold">
-        Booting flight deck…
-      </h1>
-    </div>
+    <>
+      <Hero name={profile.name} roles={profile.roles} location={profile.location} />
+      <AboutTeaser bio={profile.bio} skills={profile.skills} />
+      <FeaturedMissions projects={featured} />
+      <LatestPosts posts={posts.slice(0, 3)} />
+      <ContactCTA email={profile.email} />
+    </>
   );
 }
