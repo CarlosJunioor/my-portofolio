@@ -2,14 +2,16 @@
   "_meta": {
     "gatheredOn": "2026-05-31",
     "sources": ["github", "dev.to", "medium", "linkedin", "x"],
-    "note": "Auto-gathered by workflow gather-carlos-profile. LinkedIn & X were behind login walls; bio is drafted (see spec). Medium not found. Verify/edit before publishing."
+    "note": "Auto-gathered by workflow gather-carlos-profile, then corrected. Medium IS active at @carlos-junior (hyphen) with 9 posts; dev.to has 11 posts. LinkedIn & X were behind login walls. Posts are fetched live at build (ISR); the lists below are seed/fallback + documentation. Bio is drafted (see spec) for Carlos to edit.",
+    "postsAreFetchedLiveBy": ["lib/posts.getDevtoPosts (dev.to API)", "lib/posts.getMediumPosts (Medium RSS)"]
   },
   "identity": {
     "name": "Carlos Junior",
+    "nationality": "Brazilian",
     "location": "Lisbon, Portugal",
     "shortBio": "outsystems dev and front-end enjoyer",
-    "roles": ["OutSystems developer / low-code consultant", "Front-end developer"],
-    "careerNote": "Career-shifted into software from sales (per original portfolio).",
+    "roles": ["OutSystems O11 / low-code consultant", "Front-end developer"],
+    "careerNote": "Career-shifted into software from sales; attempted 42 Lisbon (Aug 2022), then went deep on web dev and OutSystems. Now a consultant building OSS dev tooling.",
     "avatarUrl": "https://avatars.githubusercontent.com/u/104463604?v=4",
     "personalSite": "https://catchamonsterhub.com",
     "currentPortfolio": "https://carlosjuniordev.vercel.app/"
@@ -17,15 +19,15 @@
   "socials": {
     "github": "https://github.com/CarlosJunioor",
     "devto": "https://dev.to/carlosjuniordev",
+    "medium": "https://medium.com/@carlos-junior",
     "x": "https://x.com/CarlosJuniordev",
-    "linkedin": "https://www.linkedin.com/in/carlosjuniordev/",
-    "medium": null
+    "linkedin": "https://www.linkedin.com/in/carlosjuniordev/"
   },
-  "github": {
-    "login": "CarlosJunioor",
-    "followers": 62,
-    "publicRepos": 49
+  "feeds": {
+    "devto": { "api": "https://dev.to/api/articles?username=carlosjuniordev&per_page=30", "count": 11 },
+    "medium": { "rss": "https://medium.com/feed/@carlos-junior", "count": 9 }
   },
+  "github": { "login": "CarlosJunioor", "followers": 62, "publicRepos": 49 },
   "projects": {
     "featured": [
       {
@@ -63,6 +65,22 @@
     ],
     "live": [
       {
+        "name": "Varona eSports",
+        "status": "live",
+        "tagline": "Freelance site built for the Varona eSports organization.",
+        "stack": ["JavaScript", "React"],
+        "repo": "https://github.com/CarlosJunioor/varonaEsports-project",
+        "live": "https://varonaesports.vercel.app"
+      },
+      {
+        "name": "web3dev Website",
+        "status": "live",
+        "tagline": "Next.js + TypeScript practice build.",
+        "stack": ["Next.js", "TypeScript"],
+        "repo": "https://github.com/CarlosJunioor/web3dev-website",
+        "live": "https://web3dev-website.vercel.app"
+      },
+      {
         "name": "api-stuff",
         "status": "live",
         "tagline": "API experiments incl. a Bitcoin price tracker.",
@@ -88,25 +106,40 @@
       }
     ],
     "archivedHighlights": [
+      "sorteador-xlsv (Soneca Sorteio — raffle web app from .xlsx)",
       "projeto-arenagamehouse / projeto-arenav2 (parallax sites)",
+      "travel-website, web3dev practice builds",
       "First-Portofolio-Website, FirstCSSWebsite (early HTML/CSS)",
-      "42-txuva (42 Piscine, C)",
-      "Java / c-programming learning repos",
-      "curso-react / react001 (React practice)"
+      "42-txuva (42 Lisbon Piscine, C)",
+      "Java / c-programming / curso-react learning repos"
     ]
   },
   "posts": {
+    "_note": "Source of truth is the live feed. These are the gathered seed/fallback entries (dev.to=11, medium=9).",
     "devto": [
-      {
-        "title": "Bitcoin Price Tracker — A Beginner-Friendly API Project",
-        "url": "https://dev.to/carlosjuniordev/bitcoin-price-tracker-a-beginner-friendly-api-project-2j8e",
-        "publishedAt": "2024-02-23",
-        "summary": "A beginner-friendly walkthrough building a Bitcoin price tracker using a public API, fetch, and vanilla JavaScript.",
-        "tags": ["javascript", "beginners", "api", "webdev"],
-        "reactions": 5
-      }
+      { "title": "Using Javascript Snippets in Outsystems", "url": "https://dev.to/carlosjuniordev/using-javascript-snippets-in-outsystems-29ch", "publishedAt": "2023-01-23", "tags": ["outsystems", "lowcode"], "reactions": 0 },
+      { "title": "Outsytems Data Types", "url": "https://dev.to/carlosjuniordev/outsytems-data-types-8i4", "publishedAt": "2022-11-07", "tags": ["lowcode", "outsystems", "beginners"], "reactions": 0 },
+      { "title": "solving a problem using python (I dont know anything about python)", "url": "https://dev.to/carlosjuniordev/solving-a-problem-using-python-i-dont-know-anything-about-python-319n", "publishedAt": "2022-10-22", "tags": ["python"], "reactions": 5 },
+      { "title": "'vite' is not recognized as an internal or external command", "url": "https://dev.to/carlosjuniordev/vite-is-not-recognized-as-an-internal-or-external-command-41an", "publishedAt": "2022-10-22", "tags": ["vite", "webdev"], "reactions": 20 },
+      { "title": "How to make interaction with React.js and Smart-Contract", "url": "https://dev.to/carlosjuniordev/how-to-make-interaction-with-reactjs-and-smart-contract-5ff0", "publishedAt": "2022-10-17", "tags": ["javascript", "webdev", "tutorial"], "reactions": 1 },
+      { "title": "First Web3 smart-contract", "url": "https://dev.to/carlosjuniordev/first-web3-smart-contract-5pc", "publishedAt": "2022-10-17", "tags": ["webdev", "react", "web3", "blockchain"], "reactions": 1 },
+      { "title": "New project - Soneca Sorteio", "url": "https://dev.to/carlosjuniordev/new-project-soneca-sorteio-1e91", "publishedAt": "2022-09-27", "tags": ["project"], "reactions": 2 },
+      { "title": "High Intensity", "url": "https://dev.to/carlosjuniordev/high-intensity-1c6c", "publishedAt": "2022-09-23", "tags": [], "reactions": 0 },
+      { "title": "Github Study", "url": "https://dev.to/carlosjuniordev/github-study-3he3", "publishedAt": "2022-09-23", "tags": ["git"], "reactions": 0 },
+      { "title": "react router explained for beginners", "url": "https://dev.to/carlosjuniordev/react-router-explained-for-beginners-213e", "publishedAt": "2022-09-22", "tags": ["react", "javascript", "webdev"], "reactions": 3 },
+      { "title": "Hello world", "url": "https://dev.to/carlosjuniordev/hello-world-1bbj", "publishedAt": "2022-09-22", "tags": ["webdev", "web3"], "reactions": 3 }
     ],
-    "medium": [],
+    "medium": [
+      { "title": "50 hours experience on mentor", "url": "https://medium.com/@carlos-junior/50-hours-experience-on-mentor-e8b9eb818df6", "publishedAt": "2026-05-13", "tags": ["outsystems-development"] },
+      { "title": "Feedback for OutSystems Mentor — from a consultant after a real session", "url": "https://medium.com/@carlos-junior/feedback-for-outsystems-mentor-from-a-consultant-after-a-real-session-a926d99153d0", "publishedAt": "2026-04-24", "tags": ["outsystems", "outsystems-frontend"] },
+      { "title": "5 things I learned debugging an ODC app with OutSystems Mentor", "url": "https://medium.com/@carlos-junior/5-things-i-learned-debugging-an-odc-app-with-outsystems-mentor-1f0e200cab5a", "publishedAt": "2026-04-24", "tags": ["outsystems-development"] },
+      { "title": "Mentor in ODC Studio Is Great — Until You Hit the Wall", "url": "https://medium.com/@carlos-junior/mentor-in-odc-studio-is-great-until-you-hit-the-wall-3ed2c9abc9d1", "publishedAt": "2026-04-23", "tags": ["mentor", "odc-studio"] },
+      { "title": "How I Solved a Login Footer Problem in OutSystems (And Why Simple is Better)", "url": "https://medium.com/@carlos-junior/how-i-solved-a-login-footer-problem-in-outsystems-and-why-simple-is-better-07a4cdfc4d7c", "publishedAt": "2026-01-13", "tags": ["outsystems-frontend", "outsystems"] },
+      { "title": "High intensity", "url": "https://medium.com/@carlos-junior/high-intensity-860a84379e34", "publishedAt": "2022-09-19", "tags": [] },
+      { "title": "github study", "url": "https://medium.com/@carlos-junior/github-study-d13818c738af", "publishedAt": "2022-09-17", "tags": [] },
+      { "title": "react router explained", "url": "https://medium.com/@carlos-junior/react-router-explained-ba0b60081605", "publishedAt": "2022-09-15", "tags": [] },
+      { "title": "writing my journey to software developer", "url": "https://medium.com/@carlos-junior/writing-my-journey-to-software-developer-be09dd6369f3", "publishedAt": "2022-09-01", "tags": ["programming", "coding"] }
+    ],
     "native": []
   }
 }

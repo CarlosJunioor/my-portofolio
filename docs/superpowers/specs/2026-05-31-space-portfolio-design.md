@@ -23,7 +23,8 @@ Next.js application in the same repo, preserving git history.
 - A **"Mission Control"** projects view that distinguishes **live / building /
   archived** work and links to live demos + repos, auto-synced from GitHub.
 - A **hybrid Posts** system: native MDX posts written in-repo **plus** auto-pulled
-  external articles (dev.to now; Medium hook left in code for later).
+  external articles from **dev.to** (`carlosjuniordev`, 11 posts) and **Medium**
+  (`@carlos-junior`, 9 posts incl. recent OutSystems Mentor series).
 - An **About** page with bio + an experience "Mission Log" timeline + skills.
 - Fast, SEO-friendly, resilient (external API failures never break the page).
 - Deployable on Vercel; mobile-first responsive; accessible.
@@ -35,7 +36,6 @@ Next.js application in the same repo, preserving git history.
   route is reserved but not built unless a project needs a long write-up.
 - No comments, no auth, no newsletter signup.
 - No 3D/three.js solar-system navigation (considered, not chosen).
-- No automated Medium ingestion until Carlos confirms a handle (code hook only).
 
 ## 4. Tech Stack
 
@@ -136,7 +136,7 @@ in isolation. Data-fetching lives in `lib/` (server), not in components.
 - `getNativePosts()` → read `content/posts/*.mdx` (frontmatter: title, date, tags,
   summary, cover).
 - `getDevtoPosts()` → dev.to API `articles?username=carlosjuniordev`.
-- `getMediumPosts()` → RSS parse (disabled/empty until a handle is set in config).
+- `getMediumPosts()` → RSS parse of `https://medium.com/feed/@carlos-junior` (enabled; handle configurable in `content/profile.ts`).
 - `getAllPosts()` → merge, normalize to `Post { source, title, url, date, tags,
   summary, reactions?, cover? }`, sort by date desc.
 
@@ -184,7 +184,8 @@ HTML/CSS · Node.js · Supabase · Vite · (learning: Java, C)
 
 ### Projects, Posts, Socials
 See `docs/research/profile.json` for the structured, GitHub-verified data
-(featured/live projects with URLs, the dev.to article, social links).
+(featured/live projects with URLs, 11 dev.to + 9 Medium posts, social links).
+Posts are fetched live at build via dev.to API + Medium RSS, with these as fallback.
 
 ## 12. Implementation Plan (high level)
 
@@ -204,6 +205,5 @@ Execution will use the **frontend-design** skill for the visual components and
 
 - Verify AIOS repo URL + whether it should be public on the site.
 - Confirm/replace the drafted bio + experience dates.
-- Provide a Medium handle later if/when he wants that feed on.
 - Decide whether to keep the old custom fonts (NeueMontreal, Virgil) or use the
   Space Grotesk / Inter / JetBrains Mono set proposed here.
