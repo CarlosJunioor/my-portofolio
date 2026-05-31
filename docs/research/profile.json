@@ -1,0 +1,112 @@
+{
+  "_meta": {
+    "gatheredOn": "2026-05-31",
+    "sources": ["github", "dev.to", "medium", "linkedin", "x"],
+    "note": "Auto-gathered by workflow gather-carlos-profile. LinkedIn & X were behind login walls; bio is drafted (see spec). Medium not found. Verify/edit before publishing."
+  },
+  "identity": {
+    "name": "Carlos Junior",
+    "location": "Lisbon, Portugal",
+    "shortBio": "outsystems dev and front-end enjoyer",
+    "roles": ["OutSystems developer / low-code consultant", "Front-end developer"],
+    "careerNote": "Career-shifted into software from sales (per original portfolio).",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/104463604?v=4",
+    "personalSite": "https://catchamonsterhub.com",
+    "currentPortfolio": "https://carlosjuniordev.vercel.app/"
+  },
+  "socials": {
+    "github": "https://github.com/CarlosJunioor",
+    "devto": "https://dev.to/carlosjuniordev",
+    "x": "https://x.com/CarlosJuniordev",
+    "linkedin": "https://www.linkedin.com/in/carlosjuniordev/",
+    "medium": null
+  },
+  "github": {
+    "login": "CarlosJunioor",
+    "followers": 62,
+    "publicRepos": 49
+  },
+  "projects": {
+    "featured": [
+      {
+        "name": "skillZs",
+        "slug": "skillzs",
+        "status": "building",
+        "tagline": "A Roblox-style dashboard + CLI for installing AI-agent skills into Claude Code, Codex & Cursor.",
+        "stack": ["Next.js 16", "Tailwind v4", "Supabase", "Node CLI"],
+        "repo": "https://github.com/CarlosJunioor/skillzs-cli",
+        "live": "",
+        "featured": true
+      },
+      {
+        "name": "AIOS (OutSystems Agent)",
+        "slug": "aios",
+        "status": "building",
+        "tagline": "Open-source OutSystems agent — an AI operating layer for low-code development.",
+        "stack": ["OutSystems O11", "AI"],
+        "repo": "",
+        "live": "",
+        "featured": true,
+        "note": "Private/active build — confirm repo + visibility before publishing."
+      },
+      {
+        "name": "KeyPulse",
+        "slug": "keypulse",
+        "status": "live",
+        "tagline": "Informational platform for the KeyPulse eSports team — news, matches, rosters, sponsors.",
+        "stack": ["React", "Vite", "Tailwind", "TypeScript"],
+        "repo": "https://github.com/CarlosJunioor/KeyPulse-Website",
+        "live": "https://keypulse-esports.vercel.app",
+        "stars": 3,
+        "featured": true
+      }
+    ],
+    "live": [
+      {
+        "name": "api-stuff",
+        "status": "live",
+        "tagline": "API experiments incl. a Bitcoin price tracker.",
+        "stack": ["JavaScript"],
+        "repo": "https://github.com/CarlosJunioor/api-stuff",
+        "live": "https://api-stuff-gsi2.vercel.app"
+      },
+      {
+        "name": "SavedSouls Community",
+        "status": "live",
+        "tagline": "Community web platform.",
+        "stack": ["JavaScript"],
+        "repo": "https://github.com/CarlosJunioor/SavedSouls_CommunityWeb",
+        "live": "https://saved-souls-community.vercel.app"
+      },
+      {
+        "name": "skillzs-cli",
+        "status": "live",
+        "tagline": "Install skillZs catalog entries into Claude Code, Codex, or Cursor with one npx command.",
+        "stack": ["JavaScript", "Node"],
+        "repo": "https://github.com/CarlosJunioor/skillzs-cli",
+        "live": ""
+      }
+    ],
+    "archivedHighlights": [
+      "projeto-arenagamehouse / projeto-arenav2 (parallax sites)",
+      "First-Portofolio-Website, FirstCSSWebsite (early HTML/CSS)",
+      "42-txuva (42 Piscine, C)",
+      "Java / c-programming learning repos",
+      "curso-react / react001 (React practice)"
+    ]
+  },
+  "posts": {
+    "devto": [
+      {
+        "title": "Bitcoin Price Tracker — A Beginner-Friendly API Project",
+        "url": "https://dev.to/carlosjuniordev/bitcoin-price-tracker-a-beginner-friendly-api-project-2j8e",
+        "publishedAt": "2024-02-23",
+        "summary": "A beginner-friendly walkthrough building a Bitcoin price tracker using a public API, fetch, and vanilla JavaScript.",
+        "tags": ["javascript", "beginners", "api", "webdev"],
+        "reactions": 5
+      }
+    ],
+    "medium": [],
+    "native": []
+  }
+}
